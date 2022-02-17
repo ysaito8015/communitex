@@ -3,9 +3,6 @@
 -->
 <h1>カートの中身</h1>
 
-<!--
-<%= #if @live_action in [:new, :edit] do %>
--->
 <%= if @live_action in [:edit] do %>
   <.modal return_to={Routes.cart_ui_index_path(@socket, :index)}>
     <.live_component

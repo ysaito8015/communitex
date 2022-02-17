@@ -11,8 +11,8 @@ config :bcrypt_elixir, :log_rounds, 1
 config :basic, Basic.Repo,
   username: "postgres",
   password: "postgres",
-  hostname: "localhost",
   database: "basic_test#{System.get_env("MIX_TEST_PARTITION")}",
+  hostname: "db",
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: 10
 

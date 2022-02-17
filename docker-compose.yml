@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:14.1
+    restart: unless-stopped
+    volumes:
+      - pg_db:/var/lib/postgresql/data:cached
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    command: bash
+    volumes:
+      - .:/app:cached
+    working_dir: /app
+    ports:
+      - "14000:4000"
+    depends_on:
+      - db
+    tty: true
+
+volumes:
+  pg_db:
